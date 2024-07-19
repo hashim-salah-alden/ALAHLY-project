@@ -1,0 +1,84 @@
+.titles {
+  color: #fff;
+  padding: var(--main-padding);
+  padding: 0;
+}
+.titles .container {
+  background-color: var(--light-color);
+  padding: var(--main-padding);
+  overflow: hidden;
+}
+.titles h2 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+.titles .categories {
+  text-transform: capitalize;
+  display: flex;
+}
+
+.titles .categories {
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+}
+.titles .categories li {
+  text-transform: capitalize;
+  font-size: 18px;
+  padding: 8px;
+  background-color: rgb(255 255 255 / 10%);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.titles .categories li:hover {
+  background-color: rgb(255 255 255 / 30%);
+}
+.titles .categories li.active {
+  background-color: var(--main-color);
+}
+.titles .titles-container.hidden {
+  display: none;
+}
+.titles .titles-container h3 {
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 25px;
+  margin-top: 25px;
+}
+.titles .titles-container .title {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-size: 18px;
+  text-transform: capitalize;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.titles .titles-container.football .title {
+  padding: 10px;
+}
+.titles .titles-container .title .title-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.titles .titles-container .title img {
+  width: 120px;
+  height: 120px;
+  margin-left: -25px;
+}
+.titles .title .title-info {
+  font-size: 17px;
+  height: 80px;
+}
+.titles .titles-container.football .title-info {
+  margin-left: -15px;
+}
+.titles .title .title-info h4 {
+  margin-bottom: 5px;
+}
+.titles .title .title-info span {
+  color: var(--main-color);
+}

@@ -1,0 +1,118 @@
+body {
+  background-color: #00091a;
+}
+.container{
+  padding: 0 !important;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:var(--light-secondry-color);
+  padding: 10px;
+  margin-bottom: 25px;
+  min-height: fit-content;
+}
+form {
+  width: 500px;
+  min-height: 500px;
+  color:#fff;
+  margin: 25px auto;
+}
+form .login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255 255 255 / 10%);
+  border-radius: 10px;
+  padding:10px;
+  margin: 25px auto;
+}
+.login h1 {
+  text-transform: uppercase;
+  margin: 15px auto;
+}
+form .input{
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+form .input input {
+  width: 400px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.login button{
+  background-color: rgb(255 255 255 / 10%);
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  text-transform: capitalize;
+  cursor: pointer;
+  color:#fff;
+  width: 80px;
+  margin-bottom: 15px;
+}
+.login button:hover {
+  background-color: var(--main-color);
+  transition: background-color .5s ease-in-out; 
+}
+.login .sign-with {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0;
+}
+.login .sign-with p{
+  text-transform: capitalize;
+  text-align: center;
+  width:50%;
+}
+.login .sign-with .social-links{
+  padding: 10px;
+  width: 50%;
+}
+.login .sign-with .social-links i{
+  font-size: 23px;
+  color: #fff;
+  width: 40px;
+} 
+.login .sign-with .social-links i:hover{
+  color:var(--main-color);
+  transition: color .5s ease-in-out; 
+}
+.form-container .register{
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-container .register button{
+  background-color: rgb(255 255 255 / 10%);
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    text-transform: capitalize;
+    cursor: pointer;  
+    width: 160px;
+    margin-bottom: 15px;
+}
+.form-container .register button a,
+.form-container .register button a:visited{
+  width: 100%;
+  display: block;
+  color: #fff;
+}
+.form-container .register button:hover {
+  background-color: var(--main-color);
+  transition: background-color .5s ease-in-out; 
+}

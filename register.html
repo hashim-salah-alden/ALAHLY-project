@@ -1,0 +1,126 @@
+<?php 
+include'connect.php';
+if (isset($_SESSION['email'])){
+  header("location:index.php");
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+$fnem=$_POST['fnem'];
+$lnem=$_POST['lnem'];
+$birthday=$_POST['birthday'];
+$mobile=$_POST['mobile'];
+$email=$_POST['email'];
+$psw=$_POST['psw'];
+$pswrepeat=$_POST['pswrepeat'];
+$check=$con->prepare("SELECT * FROM `user` WHERE `email`=?");
+$check->execute(array($email));
+$count = $check->rowCount();
+if ($count == 1){
+?>
+<script>
+  alert("this email is in database");
+</script>
+<?php
+    header("refresh:4;url=register.php");
+
+}else{
+  $insert=$con->prepare("INSERT INTO user (email,password,fnem,lnem,birthday,mobile)value ('{$email}','{$psw}','{$fnem}','{$lnem}','{$birthday}','{$mobile}')");
+  $insert->execute();
+  ?>
+<script>
+  alert("email insert in database");
+
+</script>
+<?php
+    header("refresh:4;url=index.php");}}
+
+
+?>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/pages/register.css" />
+  </head>
+  <body>
+    <div class="loc">
+      <form method="post"action="<?php echo $_SERVER['PHP_SELF'] ?>">
+        <div class="contanerone">
+          <h1 class="ter">Register</h1>
+          <p class="ter">Please fill in this form to create an account.</p>
+          <hr />
+
+          <label for="name"><b>First Name</b></label>
+          <input
+            type="text"
+            placeholder="First Name"
+            name="fnem"
+            id="name"
+            required
+          />
+          <hr />
+
+          <label for="name"><b>Last Name</b></label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lnem"
+            id="name"
+            required
+          />
+          <hr />
+          <label for="name"><b>Your Birthday</b></label>
+          <input
+            class="birth"
+            type="date"
+            placeholder="Your Birthday"
+            name="birthday"
+            id="birthday"
+            required
+          />
+          <hr />
+          <label for="number"><b>Mobile</b></label>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            name="mobile"
+            id="Mobile"
+            required
+          />
+          <hr />
+          <label for="email"><b>Email</b></label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            name="email"
+            id="email"
+            required
+          />
+          <hr />
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            id="psw"
+            required
+          />
+          <hr />
+          <label for="pswrepeat"><b>Repeat Password</b></label>
+          <input
+            type="password"
+            placeholder="Repeat Password"
+            name="pswrepeat"
+            id="psw-repeat"
+            required
+          />
+          <hr />
+
+          <p>
+            By creating an account you agree to our
+            <a href="#">Terms &amp; Privacy</a>.
+          </p>
+          <button type="submit" class="buttonR">Register</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

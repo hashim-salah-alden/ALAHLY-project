@@ -1,0 +1,126 @@
+<?php 
+include'connect.php';
+if (isset($_SESSION['email'])){
+  header("location:indexar.php");
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+$fnem=$_POST['fnem'];
+$lnem=$_POST['lnem'];
+$birthday=$_POST['birthday'];
+$mobile=$_POST['mobile'];
+$email=$_POST['email'];
+$psw=$_POST['psw'];
+$pswrepeat=$_POST['pswrepeat'];
+$check=$con->prepare("SELECT * FROM `user` WHERE `email`=?");
+$check->execute(array($email));
+$count = $check->rowCount();
+if ($count == 1){
+?>
+<script>
+  alert("this email is in database");
+</script>
+<?php
+    header("refresh:4;url=registerar.php");
+
+}else{
+  $insert=$con->prepare("INSERT INTO user (email,password,fnem,lnem,birthday,mobile)value ('{$email}','{$psw}','{$fnem}','{$lnem}','{$birthday}','{$mobile}')");
+  $insert->execute();
+  ?>
+<script>
+  alert("إدراج البريد الإلكتروني في قاعدة البيانات");
+
+</script>
+<?php
+    header("refresh:4;url=indexar.php");}}
+
+
+?>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/pages/register.css" />
+  </head>
+  <body>
+    <div class="loc">
+      <form method="post"action="<?php echo $_SERVER['PHP_SELF'] ?>">
+        <div class="contanerone">
+          <h1 class="ter">تسجيل</h1>
+          <p class="ter">.يرجى ملء هذا النموذج لإنشاء حساب</p>
+          <hr />
+
+          <label for="name"><b>الاسم الأول</b></label>
+          <input
+            type="text"
+            placeholder="الاسم الأول"
+            name="fnem"
+            id="name"
+            required
+          />
+          <hr />
+
+          <label for="name"><b>الأسم الثاني</b></label>
+          <input
+            type="text"
+            placeholder="الأسم الثاني"
+            name="lnem"
+            id="name"
+            required
+          />
+          <hr />
+          <label for="name"><b>تاريخ ميلادك</b></label>
+          <input
+            class="birth"
+            type="date"
+            placeholder="تاريخ ميلادك"
+            name="birthday"
+            id="birthday"
+            required
+          />
+          <hr />
+          <label for="number"><b>رقم الهاتف</b></label>
+          <input
+            type="text"
+            placeholder="رقم الهاتف"
+            name="mobile"
+            id="Mobile"
+            required
+          />
+          <hr />
+          <label for="email"><b>البريد الألكتروني</b></label>
+          <input
+            type="text"
+            placeholder="البريد الألكتروني"
+            name="email"
+            id="email"
+            required
+          />
+          <hr />
+          <label for="psw"><b>كلمه السر</b></label>
+          <input
+            type="password"
+            placeholder="كلمه السر"
+            name="psw"
+            id="psw"
+            required
+          />
+          <hr />
+          <label for="pswrepeat"><b>تاكيد كلمه السر</b></label>
+          <input
+            type="password"
+            placeholder="تاكيد كلمه السر"
+            name="pswrepeat"
+            id="psw-repeat"
+            required
+          />
+          <hr />
+
+          <p>
+            من خلال إنشاء حساب فإنك توافق على
+            <a href="#">شروط &amp; خصوصية</a>.
+          </p>
+          <button type="submit" class="buttonR">تسجيل</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

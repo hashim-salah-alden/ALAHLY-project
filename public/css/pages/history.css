@@ -1,0 +1,45 @@
+.club-history {
+  color: #fff;
+}
+.club-history .container {
+  padding: 10px;
+  background-color: var(--light-color);
+  padding-bottom: 25px;
+}
+.club-history h2 {
+  margin: 25px 0;
+}
+.club-history .event {
+  padding: 10px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255 255 255 / 10%);
+  cursor: pointer;
+  margin-top: 10px;
+}
+.club-history .event h3 {
+  text-transform: capitalize;
+  font-size: 18px;
+}
+.club-history .event-desc {
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 25px;
+}
+.club-history .event-desc.hidden {
+  display: none;
+}
+.club-history .event-desc p {
+  text-transform: capitalize;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.club-history .event-desc img {
+  margin: 25px;
+  width: 220px;
+}

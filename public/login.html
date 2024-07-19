@@ -1,0 +1,176 @@
+<?php
+if (isset($_SESSION['email'])){
+  header("location:index.php");}
+
+
+include'connect.php';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email=$_POST['email'];
+  $psw=$_POST['psw'];
+  $stmt=$con->prepare("SELECT * FROM `user` WHERE `email`=? AND password=?");
+  $stmt->execute(array($email,$psw));
+  $row=$stmt->fetch();
+  $count=$stmt->rowCount();
+  if($count>0){
+      $_SESSION['email']=$email;
+      header("location:index.php");
+}else{
+  ?>
+  <!-- <div class='alert alert-danger'>error in password or email</div> -->
+  <?php
+  header("location:login.php");
+}}
+?>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="icon" type="image/gif/png" href="images/logo.webp">
+    <link rel="stylesheet" href="css/pages/login.css" />
+    <link rel="stylesheet" href="css/global rules/globla.css" />
+    <link rel="stylesheet" href="css/global rules/layout.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+  </head>
+  <body>
+    <!-- start header  -->
+    <header>
+      <div class="container">
+        <!-- start upper heaer  -->
+        <div class="upper-header">
+          <a href="index.html">
+            <div class="logo">
+              <img src="images/logo.webp" alt="" />
+              <h1>al ahly sc</h1>
+            </div>
+          </a>
+          <div class="info">
+            <!-- <img src="/images/sponser.png" alt=""> -->
+            <div class="social-media">
+              <a href="https://www.facebook.com/Officialahlysc" target="_blank"
+                ><i class="fab fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="https://twitter.com/AlAhly" target="_blank"
+                ><i class="fab fa-brands fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/channel/UCA86pBGxVPZGrTeTecOtjew"
+                target="_blank"
+                ><i class="fab fa-brands fa-youtube"></i
+              ></a>
+            </div>
+            <div class="store">
+              <a href="https://www.umbro.co.uk/al-ahly-sc" target="_blank"
+                ><button>
+                  <i class="fab fa-brands fa-opencart"></i>online store
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- end upper header  -->
+      </div>
+      <!-- start lower header  -->
+      <div class="lower-header">
+        <div class="container">
+          <ul class="links">
+          <li><a href="index.html">home</a></li>
+            <li><a href="#partners">partners</a></li>
+            <li><a href="hsitory.html">history</a></li>
+            <li><a href="#partners">partners</a></li>
+            <li><a href="register.html">register</a></li>
+            <!-- <li><a href="#">six</a></li>
+          <li><a href="#">seven</a></li> -->
+          </ul>
+        </div>
+      </div>
+      <!-- end lower header  -->
+    </header>
+    <!-- end header  -->
+
+    <!-- start form  --> 
+    <div class="container">
+      <div class="form-container"> 
+      <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+        <!-- strat login  -->
+        <div class="login">
+            <h1>Log In</h1>
+          <div class="input email">
+            <label for="uname">Email</label>
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="input password">
+            <label for="psw">Password</label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            />
+          </div>
+          <button type="submit" class="loginn">Login</button>
+          <!-- <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label> -->
+          <div class="sign-with">
+            <p>sign in with</p>    
+            <div class="social-links">
+              <a href="https://www.facebook.com" target="_blank"
+              ><i class="fab fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.gmail.com">
+              <i class="fas fa-solid fa-envelope"></i>
+            </a>        
+            <a href="https://twitter.com/AlAhly" target="_blank"
+              ><i class="fab fa-brands fa-twitter"></i
+            ></a>
+            </div>
+          </div>
+        </div>
+        <!-- end login   -->
+
+        <!-- start register  -->
+        <div class="register">
+            <button type="button" class="sign-up"><a href="register.html">Sign Up</a></button>
+          </a>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+        <!-- end register  -->
+        
+        
+      </form>
+    </div>
+    </div>
+    <!-- end form  -->
+
+    <!-- start partners  -->
+    <div id="partners" class="partners">
+      <div class="container">
+        <h2>partners</h2>
+        <div class="partners-contianer">
+          <img src="images/partners/شعار umpro-Recovered.png" alt="" />
+          <img src="images/partners/شعار كوكا -Recovered.png" alt="" />
+          <img src="images/partners/شعار وى-366.png" alt="" />
+          <img src="images/partners/شعار وى-Recovered  2.png" alt="" />
+          <img src="images/partners/شعار وى.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- end partners  -->
+
+    <!-- start footer  -->
+    <footer>
+      <div class="container">
+        <div class="logo">
+          <img src="images/logo.webp" alt="" />
+          <h2>al ahly sc</h2>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer  -->
+  </body>
+</html>

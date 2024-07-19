@@ -1,0 +1,1 @@
+let events=[...document.querySelectorAll(".club-history .event")],eventsDesc=[...document.querySelectorAll(".club-history .event-desc")];function createToggle(e,t){e.forEach(e=>{e.addEventListener("click",e=>{t.map(t=>{t.classList.contains(e.target.getAttribute("data-name"))&&(t.classList.toggle("hidden"),console.log(e.target))})})})}createToggle(events,eventsDesc);
